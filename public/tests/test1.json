@@ -1,0 +1,45 @@
+{
+  "name": "Викторина по JavaScript",
+  "settings": {
+    "timeLimit": 10,
+    "points": [10, 7, 5, 3],
+    "resultTime": 5
+  },
+  "questions": [
+    {
+      "question": "Что вернёт typeof null?",
+      "options": ["null", "object", "undefined", "boolean"],
+      "correct": 1
+    },
+    {
+      "question": "Как объявить константу в JavaScript?",
+      "options": ["var x = 5", "let x = 5", "const x = 5", "static x = 5"],
+      "correct": 2
+    },
+    {
+      "question": "Что делает метод Array.map()?",
+      "options": [
+        "Фильтрует массив",
+        "Создаёт новый массив с результатами вызова функции для каждого элемента",
+        "Сортирует массив",
+        "Объединяет два массива"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Что выведет console.log(2 + '2')?",
+      "options": ["4", "22", "NaN", "Ошибку"],
+      "correct": 1
+    },
+    {
+      "question": "Как проверить, является ли переменная массивом?",
+      "options": [
+        "typeof arr === 'array'",
+        "arr.isArray()",
+        "Array.isArray(arr)",
+        "arr instanceof Object"
+      ],
+      "correct": 2
+    }
+  ]
+}

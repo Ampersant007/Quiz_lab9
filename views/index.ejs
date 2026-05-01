@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚛 <%= companyName %></h1>
+        <h2>Управление услугами</h2>
+        
+        <div class="nav-links">
+            <a href="/quiz" class="quiz-link">🎯 Перейти к викторине</a>
+        </div>
+        
+        <div class="info-box">
+            <h3>📊 Статистика</h3>
+            <p>📅 Дата: <%= new Date().toLocaleDateString('ru-RU') %></p>
+            <p>📆 Год: <%= year %></p>
+            <p>📋 Всего услуг: <strong><%= total %></strong></p>
+        </div>
+        
+        <!-- Поиск -->
+        <div class="control-panel">
+            <form action="/" method="GET" class="search-box">
+                <input type="hidden" name="sort" value="<%= currentSort %>">
+                <input type="hidden" name="order" value="<%= currentOrder %>">
+                <input type="hidden" name="limit" value="<%= currentLimit %>">
+                <input type="text" name="search" value="<%= currentSearch %>" placeholder="🔍 Поиск по названию...">
+                <button type="submit">Найти</button>
+                <% if (currentSearch) { %>
+                    <a href="/?sort=id&order=asc&limit=5" class="btn-link">Сбросить</a>
+                <% } %>
+            </form>
+        </div>
+        
+        <!-- Сортировка -->
+        <div class="control-panel">
+            <form action="/" method="GET" class="sort-box">
+                <input type="hidden" name="search" value="<%= currentSearch %>">
+                <input type="hidden" name="limit" value="<%= currentLimit %>">
+                <label>Сортировать по:</label>
+                <select name="sort" onchange="this.form.submit()">
+                    <option value="id" <%= currentSort === 'id' ? 'selected' : '' %>>ID</option>
+                    <option value="name" <%= currentSort === 'name' ? 'selected' : '' %>>Названию</option>
+                    <option value="price" <%= currentSort === 'price' ? 'selected' : '' %>>Цене</option>
+                </select>
+                <select name="order" onchange="this.form.submit()">
+                    <option value="asc" <%= currentOrder === 'asc' ? 'selected' : '' %>>⬆ Возрастание</option>
+                    <option value="desc" <%= currentOrder === 'desc' ? 'selected' : '' %>>⬇ Убывание</option>
+                </select>
+            </form>
+            
+            <form action="/" method="GET" class="limit-box">
+                <input type="hidden" name="search" value="<%= currentSearch %>">
+                <input type="hidden" name="sort" value="<%= currentSort %>">
+                <input type="hidden" name="order" value="<%= currentOrder %>">
+                <label>Показывать:</label>
+                <select name="limit" onchange="this.form.submit()">
+                    <option value="3" <%= currentLimit === 3 ? 'selected' : '' %>>3</option>
+                    <option value="5" <%= currentLimit === 5 ? 'selected' : '' %>>5</option>
+                    <option value="10" <%= currentLimit === 10 ? 'selected' : '' %>>10</option>
+                    <option value="20" <%= currentLimit === 20 ? 'selected' : '' %>>20</option>
+                </select>
+            </form>
+        </div>
+        
+        <!-- Форма добавления -->
+        <div class="form-box">
+            <h3>➕ Добавить услугу</h3>
+            <input type="text" id="name" placeholder="Название">
+            <input type="number" id="price" step="0.1" placeholder="Цена руб/км">
+            <button onclick="addItem()">Добавить</button>
+        </div>
+
+        <div id="message"></div>
+        
+        <!-- Список услуг -->
+        <h3>📋 Список услуг</h3>
+        <% if (services.length === 0) { %>
+            <p>📭 Нет услуг</p>
+        <% } else { %>
+            <ul>
+                <% services.forEach(function(item) { %>
+                    <li>
+                        <div>
+                            <strong><%= item.id %>.</strong>
+                            <%= item.name %> - <%= item.price %> руб/км
+                        </div>
+                        <div>
+                            <button onclick="editItem(<%= item.id %>)" title="Редактировать">✏️</button>
+                            <button onclick="deleteItem(<%= item.id %>)" title="Удалить">🗑️</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+        
+        <!-- Пагинация -->
+        <% if (totalPages > 1) { %>
+            <div class="pagination">
+                <div class="pagination-controls">
+                    <% if (currentPage > 1) { %>
+                        <a href="/?page=1&<%= paramsStr %>">⏮ Первая</a>
+                        <a href="/?page=<%= currentPage - 1 %>&<%= paramsStr %>">◀ Предыдущая</a>
+                    <% } %>
+                    
+                    <span class="page-info">Страница <%= currentPage %> из <%= totalPages %></span>
+                    
+                    <% if (currentPage < totalPages) { %>
+                        <a href="/?page=<%= currentPage + 1 %>&<%= paramsStr %>">Следующая ▶</a>
+                        <a href="/?page=<%= totalPages %>&<%= paramsStr %>">Последняя ⏭</a>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

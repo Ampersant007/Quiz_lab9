@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="nav-links">
+      <a href="/">← Назад к услугам</a>
+    </div>
+
+    <div id="lobby" class="screen hidden">
+      <h2 id="testName"></h2>
+      <p>Вопросов: <span id="totalQuestions"></span></p>
+      <div id="playersList"></div>
+      <button id="readyBtn">Готов</button>
+      <p id="readyCount"></p>
+    </div>
+
+    <div id="question" class="screen hidden">
+      <div id="timer">Осталось: <span id="timeLeft">10</span> сек</div>
+      <p id="questionCounter"></p>
+      <h3 id="questionText"></h3>
+      <div id="options"></div>
+      <p id="observerMsg" class="hidden">Вы наблюдатель. Игра уже идёт. Вы сможете присоединиться в следующем раунде.</p>
+      <p id="answerStatus" class="hidden">Ответ принят</p>
+      <button id="observerBtn" class="observer-btn hidden">Стать наблюдателем</button>
+    </div>
+
+    <div id="result" class="screen hidden">
+      <p id="resultCounter"></p>
+      <h3 id="resultQuestion"></h3>
+      <div id="resultOptions"></div>
+      <div id="scores"></div>
+      <div id="scoreboard"></div>
+      <p id="nextTimer"></p>
+    </div>
+
+    <div id="final" class="screen hidden">
+      <h2>Итоги викторины</h2>
+      <p id="finalCounter"></p>
+      <div id="rankings"></div>
+      <button id="playAgainBtn">Играть снова</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/client.js"></script>
+</body>
+</html>

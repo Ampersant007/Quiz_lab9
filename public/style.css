@@ -1,0 +1,405 @@
+/* ========== Общие стили ========== */
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #1a1a2e;
+    text-align: center;
+    margin: 0 0 5px 0;
+}
+
+h2 {
+    color: #ffb800;
+    text-align: center;
+    font-size: 18px;
+    margin: 0 0 20px 0;
+}
+
+h3 {
+    color: #1a1a2e;
+}
+
+.nav-links {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quiz-link, .btn-link {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #ffb800;
+    color: #1a1a2e;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.quiz-link:hover, .btn-link:hover {
+    background: #e5a600;
+    transform: scale(1.05);
+}
+
+.btn-link {
+    padding: 10px 20px;
+    font-size: 14px;
+    background: #1a1a2e;
+    color: white;
+}
+
+.btn-link:hover {
+    background: #ffb800;
+    color: #1a1a2e;
+}
+
+.info-box {
+    background: #e8f4f8;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 5px solid #ffb800;
+}
+
+.info-box h3 {
+    margin: 0 0 10px 0;
+}
+
+.info-box p {
+    margin: 5px 0;
+}
+
+.control-panel {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box, .sort-box, .limit-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-box input {
+    width: 200px;
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+label {
+    font-weight: bold;
+    color: #1a1a2e;
+}
+
+.form-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+.form-box h3 {
+    margin: 0 0 15px 0;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    background: #1a1a2e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #ffb800;
+    color: #1a1a2e;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    margin: 5px 0;
+    background: #fafafa;
+    border-radius: 5px;
+}
+
+li:hover {
+    background: #f0f0f0;
+}
+
+.pagination {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pagination-controls a {
+    padding: 8px 15px;
+    background: #1a1a2e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.pagination-controls a:hover {
+    background: #ffb800;
+    color: #1a1a2e;
+}
+
+.page-info {
+    padding: 8px 15px;
+    background: #e8f4f8;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#message {
+    padding: 10px;
+    background: #d4edda;
+    color: #155724;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#message:empty {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .control-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box, .sort-box, .limit-box {
+        justify-content: space-between;
+    }
+    
+    .pagination-controls a {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+/* ========== Стили викторины ========== */
+#app {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.screen {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+#timer {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#questionCounter, #resultCounter, #finalCounter {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#questionText, #resultQuestion {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#options, #resultOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    color: #1a1a2e;
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: #4CAF50;
+    background: #f0f9f0;
+}
+
+.option-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: #666;
+}
+
+.option-btn.correct {
+    border-color: #4CAF50;
+    background: #d4edda;
+    font-weight: bold;
+}
+
+.option-btn.wrong {
+    border-color: #f44336;
+    background: #f8d7da;
+}
+
+#observerMsg {
+    color: #ff9800;
+    font-style: italic;
+    margin-top: 15px;
+}
+
+#answerStatus {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+#scores, #scoreboard {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+#nextTimer {
+    text-align: center;
+    color: #999;
+    margin-top: 20px;
+}
+
+#playersList {
+    margin-bottom: 20px;
+}
+
+.player-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.player-status {
+    color: #666;
+}
+
+.player-score {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+#readyBtn, #playAgainBtn {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#readyBtn:hover, #playAgainBtn:hover {
+    background: #45a049;
+}
+
+#readyCount {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
+
+#rankings p {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.observer-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.observer-btn:hover {
+    background: #f57c00;
+}
