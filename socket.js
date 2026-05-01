@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const TEST_FILE = 'tests/test1.json';
+const TEST_FILE = 'tests/russian.json';
 
 function loadTest() {
   try {
